@@ -1,7 +1,7 @@
 # ========================================================
 # Stage: Builder
 # ========================================================
-FROM --platform=$BUILDPLATFORM golang:1.20.4-alpine AS builder
+FROM --platform=linux/amd64 golang:1.20.4-alpine AS builder
 WORKDIR /app
 ARG TARGETARCH
 ENV CGO_ENABLED=1
@@ -15,7 +15,7 @@ RUN apk --no-cache --update add \
 COPY . .
 
 RUN go build -o build/x-ui main.go
-RUN ./DockerInit.sh "$TARGETARCH"
+RUN ./DockerInit.sh "amd64"
 
 # ========================================================
 # Stage: Final Image of 3x-ui
