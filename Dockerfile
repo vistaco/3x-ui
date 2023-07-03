@@ -44,4 +44,5 @@ RUN chmod +x \
   /usr/bin/x-ui
 
 VOLUME [ "/etc/x-ui" ]
+EXPOSE 2053
 ENTRYPOINT [ "/app/DockerEntrypoint.sh" ]
